@@ -76,7 +76,7 @@ From Account B, create an IAM role
 Amazon S3 bucket.
 Install AWS CLI
 From the Amazon EC2 instance, configure the role with your credentials
- After you connect to the instance, verify if the directory already has a folder named .aws _ _path of the file \home\ec2-user\.aws\config_ _
+ After you connect to the instance, verify if the directory already has a folder named .aws **path of the file _\home\ec2-user\.aws\config_ where the .aws folder is located**
  
  Edit with your favarite editor
  

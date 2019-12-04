@@ -58,7 +58,8 @@ From Account B, create an IAM role
 9.    For Role name, enter a name for the role.
 10.    Choose Create role.
 11.    Choose Add inline policy, and then choose the JSON view.
-   **Enter the following policy mentioned below Replace _arn:aws:iam::111111111111:role/ROLENAME_ with the Amazon Resource Name (ARN) of the IAM role that you created in Account B**
+
+**Enter the following policy mentioned below Replace _arn:aws:iam::111111111111:role/ROLENAME_ with the Amazon Resource Name (ARN) of the IAM role that you created in Account B**
 ```
 {
     "Version": "2012-10-17",
@@ -80,10 +81,10 @@ From the Amazon EC2 instance, configure the role with your credentials
  
  Edit with your favarite editor
 
- *vi \home\ec2-user\.aws\config*
+ >vi \home\ec2-user\.aws\config
 
  In the file, enter the following text. Replace enterprofilename with the name of the role that you
-attached to the instance. Then, replace arn:aws:iam::111111111111:role/ROLENAME with the
+attached to the instance. Then, replace *arn:aws:iam::111111111111:role/ROLENAME* with the
 ARN of the role that you created in Account B.
 ```
 [profile profilename]

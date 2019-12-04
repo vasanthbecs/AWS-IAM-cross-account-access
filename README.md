@@ -108,9 +108,10 @@ aws s3 ls BucketName
 
 
 
-Another Alternative method for cross account access
+# Another Alternative method for cross account access
  
- Below example we have AWS account A where we have Route53 domain hosted and another AWS account B where EC2 instance launched we have to need to have account b instance to access Route53 hosted in account B.
+ ### Below example we have AWS account A where we have Route53 domain hosted and another AWS account B where EC2 instance launched we have to need to have account b instance to access Route53 hosted in account B.
+ #### Here, in this example cross account access is granting using the temporary access key and screte key which will have some hours life time.
  
  How to do it, please see below.
  
@@ -154,7 +155,9 @@ Another Alternative method for cross account access
 3. Create below policy and attach to the same role which we have created erlier.
 
 **STS assume policy**
---------------------
+
+```
+
 {
     "Version": "2012-10-17",
     "Statement": {

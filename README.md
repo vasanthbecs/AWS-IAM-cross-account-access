@@ -83,9 +83,9 @@ From the Amazon EC2 instance, configure the role with your credentials
 
  >vi \home\ec2-user\.aws\config
 
- In the file, enter the following text. Replace enterprofilename with the name of the role that you
-attached to the instance. Then, replace *arn:aws:iam::111111111111:role/ROLENAME* with the
-ARN of the role that you created in Account B.
+ In the file, enter the following text. **Replace enterprofilename with the name of the role that you
+attached to the instance. Then, replace _arn:aws:iam::111111111111:role/ROLENAME_ with the
+ARN of the role that you created in Account B**.
 ```
 [profile profilename]
 role_arn = arn:aws:iam::111111111111:role/ROLENAME

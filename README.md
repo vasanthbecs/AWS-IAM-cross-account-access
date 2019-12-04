@@ -14,7 +14,7 @@ From Account B, create an IAM role
 5.    For Select type of Trust Relationships, choose Another AWS account.
 6.    For Account ID, enter the account ID of Account A.
 7.    Choose Next: Permissions.
-* *Attach a policy to the role that delegates access to Amazon S3. For example, this policy grants access to all actions to a specific bucket and the objects stored in the bucket:* *
+*Attach a policy to the role that delegates access to Amazon S3. For example, this policy grants access to all actions to a specific bucket and the objects stored in the bucket:*
 ```
 {
     "Version": "2012-10-17",
@@ -79,8 +79,8 @@ From the Amazon EC2 instance, configure the role with your credentials
  After you connect to the instance, verify if the directory already has a folder named .aws **path of the file _\home\ec2-user\.aws\config_ where the .aws folder is located**
  
  Edit with your favarite editor
- 
- vi \home\ec2-user\.aws\config
+
+ *vi \home\ec2-user\.aws\config*
 
  In the file, enter the following text. Replace enterprofilename with the name of the role that you
 attached to the instance. Then, replace arn:aws:iam::111111111111:role/ROLENAME with the
@@ -89,6 +89,7 @@ ARN of the role that you created in Account B.
 [profile profilename]
 role_arn = arn:aws:iam::111111111111:role/ROLENAME
 credential_source = Ec2InstanceMetadata
+
 ````
 
 Verify the instance profile

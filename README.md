@@ -58,7 +58,7 @@ From Account B, create an IAM role
 9.    For Role name, enter a name for the role.
 10.    Choose Create role.
 11.    Choose Add inline policy, and then choose the JSON view.
-   __Enter the following policy. Replace arn:aws:iam::111111111111:role/ROLENAME with the Amazon Resource Name (ARN) of the IAM role that you created in Account B.__
+   **Enter the following policy mentioned below Replace _arn:aws:iam::111111111111:role/ROLENAME_ with the Amazon Resource Name (ARN) of the IAM role that you created in Account B**
 ```
 {
     "Version": "2012-10-17",

@@ -116,6 +116,123 @@ Another Alternative method for cross account access
  
  1. account A create a IAM role for cross account access
  
+
+ 
+ 
+ ![edited1](https://user-images.githubusercontent.com/24250130/70145669-a40ef200-16c6-11ea-890d-9319b3f461ad.png)
+ 
+2. Once IAM role created attached the below Inline policies to access the Route53.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "route53:GetHostedZone",
+                "route53:ChangeResourceRecordSets",
+                "route53:ListResourceRecordSets",
+                "route53:GetHostedZoneLimit"
+            ],
+            "Resource": "arn:aws:route53:::hostedzone/xxxxxxx"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "route53:GetHostedZoneCount",
+            "Resource": "*"
+        }
+    ]
+}
+
+ 
+ 
+```
+
+3. Create below policy and attach to the same role which we have created erlier.
+
+**STS assume policy**
+--------------------
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Effect": "Allow",
+        "Action": "sts:AssumeRole",
+        "Resource": "arn:aws:iam:: xxxxx:role/role name"  (ARM of role created in account A)
+    }
+}
+
+```
+
+4. Edit the below trust relationship policy for the same account A IAM role to get the cross account access to account B account ID
+
+```
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam:: account B ID:root"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {}
+    }
+  ]
+}
+
+```
+
+5. Login to account B and create IAM role for ec2 instance and add the below STS policy to assume the IAM role of account A
+
+```
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "sts:AssumeRole",
+                "sts:GetFederationToken",
+                "sts:AssumeRoleWithSAML",
+                "sts:AssumeRoleWithWebIdentity"
+            ],
+            "Resource": "arn of account A role"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "sts:DecodeAuthorizationMessage",
+                "sts:GetCallerIdentity"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+
+```
+6. Attach the role to instance in account B.
+
+7. login to the mentioned EC2 instances  and run the below command which will give you the temporary credentials to use the cross account role
+
+**aws sts assume-role --role-arn "arn of account A role" --role-session-name "Name of your choice"**
+
+
+This will give you the temporary credentials and use the same to create a CLI profile.
+Example output will be like below.
+
+ ![edited2](https://user-images.githubusercontent.com/24250130/70145671-a40ef200-16c6-11ea-8b9b-4c959f2aef7f.png)
+ 
+ 
+ finaly test the connection with AWS CLI command
+ 
+ 
  
  
  

@@ -102,3 +102,20 @@ aws sts get-caller-identity --profile profilename
 ```
 To verify access to the Amazon S3 bucket, please follow the mentioned steps.
 aws s3 ls BucketName
+
+
+
+
+
+
+Another Alternative method for cross account access
+ 
+ Below example we have AWS account A where we have Route53 domain hosted and another AWS account B where EC2 instance launched we have to need to have account b instance to access Route53 hosted in account B.
+ 
+ How to do it, please see below.
+ 
+ 1. account A create a IAM role for cross account access
+ 
+ 
+ 
+ 
